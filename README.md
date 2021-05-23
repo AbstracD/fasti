@@ -8,7 +8,7 @@ getY(returns client height)
 delElement(deletes any element)
 delAll(deletes all fasti objects)
 
-so if you want to test this, paste code into html/js, or use require in node, 
+so if you want to test this, paste code into html/js, or use require in node.js, 
 but I'm not sure it will work, and try code like
 
 btn1 = addButton(200, 200, 'button');
