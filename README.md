@@ -1,4 +1,12 @@
-fasti (FAST Interface) is a JavaScript library for simple JS-only (with DOM) interface creation.
+### `fasti` (FAST Interface) is a `JavaScript library` for simple `JS-only` (with DOM) interface creation.
+
+* [Examples](#examples)
+  * [Element Creation](#element-creation)
+  * [Delete Element](#delete-element)
+* [API](#api)
+  * [Creating Elements](#creating-elements)
+  * [Misc](#misc)
+  * [Deleting elements](#deleting-elements)
 
 # Examples
 ## Element creation
