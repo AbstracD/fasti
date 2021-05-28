@@ -27,7 +27,7 @@ delElement(btn);   //Delete button
 ## Creating Elements
 ### Add Button
 ```javascript
-addButton(text, onclick = undefined);
+addButton(text, action = undefined);
 ```
 Creates a simple button
 
@@ -35,11 +35,11 @@ Creates a simple button
 
 ### Add Image
 ```javascript
-addImage(src, style = '');
+addImage(src, action = undefined);
 ```
 Creates an image
 
-TODO: Explain
+`src`: type `string`, `action`: type `callback`
 
 ### Add Header
 ```javascript
@@ -87,7 +87,7 @@ Creates textarea element
 ```javascript
 addRef(text, href);
 ```
-Creates reference, a element and it's href
+Creates reference, an element and it's href
 
 `text`, `href`: type `string`
 
@@ -95,9 +95,38 @@ Creates reference, a element and it's href
 ```javascript
 addList(text);
 ```
-Creates HTML list
+Creates `<ul>/<li>` element with text at every `<li>`
 
 `text`: type `array` of `string`
+
+### Add form
+```javascript
+addForm(action = undefined);
+```
+Creates form
+`action`: type `callback`
+
+Methods:
+```javascript
+addForm().add(elem);
+```
+Moves fasti element inside div
+
+`elem`: type `fasti element`
+
+### Add div
+```javascript
+addDiv();
+```
+Creates div
+
+Methods:
+```javascript
+addDiv().add(elem);
+```
+Moves fasti element inside form
+
+`elem`: type `fasti element`
 
 ## Misc
 ### Get client width
@@ -116,7 +145,7 @@ setBG(color);
 ```
 Set `<body>...</body>` color to specified
 
-`color`: type `idk`
+`color`: type `string`
 
 ### Set Title
 ```javascript
@@ -141,16 +170,22 @@ setPlaceNone(element)
 ```
 Returns element to it's default position
 
-`element`: type `fasti object`;7
+`element`: type `fasti object`
 
 ## Styling
-## HTML Style
+### Page style update
+```javascript
+setStyleUpdated();
+```
+Updates style of every fasti element
+
+### HTML Style
 ```javascript
 setStyleNone();
 ```
 Set HTML style to default
 
-## Light Style
+### Light Style
 ```javascript
 setStyleDefault(); 
 ```
@@ -161,6 +196,76 @@ Set fasti light theme to default
 setStyleDark();
 ```
 Set fasti dark theme to default
+
+### Button style change
+```javascript
+setButton(style);
+```
+Set button default CSS style to given
+`style`: type `string`
+
+### Image style change
+```javascript
+setImage(style);
+```
+Set image default style
+`style`: type `string`
+
+### Header style change
+```javascript
+setHeader(style);
+```
+Set header default style
+`style`: type `string`
+
+### Text style change
+```javascript
+setText(style);
+```
+Set text default style
+`style`: type `string`
+
+### Input style change
+```javascript
+setInput(style);
+```
+Set input default style
+`style`: type `string`
+
+### Text field style change
+```javascript
+setField(style);
+```
+Set field default style
+`style`: type `string`
+
+### Reference style change
+```javascript
+setRef(style);
+```
+Set reference default style
+`style`: type `string`
+
+### List style change
+```javascript
+setList(style);
+```
+Set list default style
+`style`: type `string`
+
+### Form style change
+```javascript
+setForm(style);
+```
+Set form default style
+`style`: type `string`
+
+### Div style change
+```javascript
+setDiv(style);
+```
+Set Div default style
+`style`: type `string`
 
 ## Deleting elements
 ### Delete Single Element
