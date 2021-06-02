@@ -1,3 +1,4 @@
+[README.md](https://github.com/AbstracD/fasti/files/6581202/README.md)
 ### `fasti` (FAST Interface) is a `JavaScript library` for simple `JS-only` (with DOM) interface creation.
 
 * [Examples](#examples)
@@ -66,6 +67,7 @@ Creates text input, for another input types another functions
 ### Add Flag
 ```javascript
 addFlag();
+[README.md](https://github.com/AbstracD/fasti/files/6581206/README.md)
 ```
 Creates radio input
 
@@ -98,6 +100,14 @@ addList(text);
 Creates `<ul>/<li>` element with text at every `<li>`
 
 `text`: type `array` of `string`
+
+### Add list of references
+```javascript 
+addRefList(text);
+```
+Creates `<ul>/<li>` element with references at every `<li>`
+
+`text`: type `object`, where each key/value is text and href
 
 ### Add form
 ```javascript
@@ -138,6 +148,13 @@ var w = getX();
 ```javascript
 var h = getY();
 ```
+
+### Get elements default style
+```javascript
+getElement();
+```
+where element is any fasti element, except addRefList, which
+uses reference and ul/li style at once.
 
 ### Set Background
 ```javascript
