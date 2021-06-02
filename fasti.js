@@ -30,9 +30,19 @@ updateStyle : function(){
 						}
 }
 
-function getX(){return window.innerWidth;}
-function getY(){return window.innerHeight;}
+const getX = () => window.innerWidth;
+const getY = () => window.innerHeight;
 
+const getButton = () => fastiDefaults.style['btn'];
+const getImage = () => fastiDefaults.style['img'];
+const getHeader = () => fastiDefaults.style['header'];
+const getText = () => fastiDefaults.style['text'];
+const getInput = () => fastiDefaults.style['input'];
+const getField = () => fastiDefaults.style['textarea'];
+const getRef = () => fastiDefaults.style['ref'];
+const getList = () => fastiDefaults.style['ul'];
+const getForm = () => fastiDefaults.style['form'];
+const getDiv = () => fastiDefaults.style['div'];
 
 function setPlace(elem, x, y){
 	source = fastiDefaults.all[elem];
@@ -42,18 +52,18 @@ function setPlace(elem, x, y){
 }
 function setPlaceNone(elem){fastiDefaults.all[elem].style.position = 'static';}
 
-function setBG(color){document.body.style.background = color;}
+const setBG = color => document.body.style.background = color;
 
-function setButton(style){fastiDefaults.style['btn'] = style;}
-function setImage(style){fastiDefaults.style['img'] = style;}
-function setHeader(style){fastiDefaults.style['header'] = style;}
-function setText(style){fastiDefaults.style['text'] = style;}
-function setInput(style){fastiDefaults.style['input'] = style;}
-function setField(style){fastiDefaults.style['textarea'] = style;}
-function setRef(style){fastiDefaults.style['ref'] = style;}
-function setList(style){fastiDefaults.style['ul'] = style;}
-function setForm(style){fastiDefaults.style['form'] = style;}
-function setDiv(style){fastiDefaults.style['div'] = style;}
+const setButton = style => fastiDefaults.style['btn'] = style;
+const setImage = style => fastiDefaults.style['img'] = style;
+const setHeader = style => fastiDefaults.style['header'] = style;
+const setText = style => fastiDefaults.style['text'] = style;
+const setInput = style => fastiDefaults.style['input'] = style;
+const setField = style => fastiDefaults.style['textarea'] = style;
+const setRef = style => fastiDefaults.style['ref'] = style;
+const setList = style => fastiDefaults.style['ul'] = style;
+const setForm = style => fastiDefaults.style['form'] = style;
+const setDiv = style => fastiDefaults.style['div'] = style;
 
 function setTitle(title){
 	var title_src = document.createElement('title');
@@ -72,6 +82,7 @@ function setStyleDefault(){
 	fd['btn'] = 'padding: 1%; background-color: #ddddbb; border: 5%; border-left-color: #eeeecc; border-top-color: #ffffdd; border-right-color: #aaaa88; border-bottom-color: #999977; color: #000000; text-align: center; border-radius: 10%';
 	fd['header'] = 'color: #444444;';
 	fd['text'] = 'font-size: 120%; color: #444444;';
+	fd['ref'] = 'font-size: 120%;'
 	fd['input'] = '';
 	fd['list'] = 'color: #444444';
 	fastiDefaults.updateStyle();
@@ -82,6 +93,7 @@ function setStyleDark(){
 	fd['btn'] = 'padding: 1%; background-color: #606060; border: 5% solid #606060; border-left-color: #787878; border-top-color: #888888; border-right-color: #404040; border-bottom-color: #353535; color: #eeeeee; text-align: center; border-radius: 10%';
 	fd['header'] = 'color: #aaaaaa;';
 	fd['text'] = 'font-size: 120%; color: #aaaaaa;';
+	fd['ref'] = 'font-size: 120%;'
 	fd['input'] = '';
 	fd['list'] = 'color: #aaaaaa';
 	fastiDefaults.updateStyle();
@@ -163,7 +175,7 @@ function addRef(txt, href){
 	var elem = document.createElement('a');
 	elem.fd_type = 'ref'
 	elem.innerHTML = txt;
-	elem.style = f.style[elem.fd_type];
+	elem.style = fd.style[elem.fd_type];
 	elem.href = href;
 	return fd.add(elem);
 }
@@ -179,6 +191,21 @@ function addList(txt){
 	}
 	return fd.add(elem);
 }
+function addRefList(txt){
+	fd = fastiDefaults;
+	elem = document.createElement('ul');
+	elem.fd_type = 'ul';
+	elem.style = fd.style[elem.fd_type];
+	elem.innerHTML = '';
+	keys = Object.keys(txt);
+	for(i = 0; i<keys.length; i++){
+		point = addRef('<li>'+keys[i], txt[keys[i]]);
+		elem.appendChild(point);
+	}
+	return fd.add(elem);
+	
+	
+}
 
 function addDiv(){
 	fd = fastiDefaults;
@@ -188,7 +215,13 @@ function addDiv(){
 	elem.add = function(_elem){
 							  document.body.removeChild(_elem);
 							  elem.appendChild(_elem);
-	}
+							  }
+	elem.addSet = function(elemset){
+									for(i = 0; i<elemset.length; i++){
+										document.body.removeChild(elemset[i]);
+										elem.appendChild(elemset[i]);
+										}
+									}
 	return fd.add(elem);
 }
 function addForm(action = undefined){
@@ -200,7 +233,13 @@ function addForm(action = undefined){
 	elem.add = function(_elem){
 							  document.body.removeChild(_elem);
 							  elem.appendChild(_elem);
-	}
+							  }
+	elem.addSet = function(elemset){
+									for(i = 0; i<elemset.length; i++){
+										document.body.removeChild(elemset[i]);
+										elem.appendChild(elemset[i]);
+										}
+									}
 	return fd.add(elem);
 }
 
